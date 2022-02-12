@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script language="javascript" src="datafaker.js"></script>
+<script>
+function GenTable( columns, records )
+{
+    var html = "<table>";
+    html += "<tr>";
+    for( var i = 0 ; i < columns.length ; i++ )
+    {
+        html += "<td>" + columns[i] + "</td>";
+    }
+    html += "</tr>";
+
+    records.forEach( function( rec ) {
+        html += "<tr>";
+        for( var i = 0 ; i < columns.length ; i++ )
+        {
+            html += "<td>" + rec[columns[i]] + "</td>";
+        }
+        html += "</tr>";
+    } );
+
+
+    html += "</table>";
+    return html;
+}
+</script>
+</head>
+<body>
+
+</body>
+<script>
+var fmt = {
+    'age':  ['integer', 0, 120], // [start, end]
+    'full_name': ['name'],
+    'first_name':['word',5, true],
+    'description': ['sentence', 10, 20],
+    'website': ['domain', 2],
+    };
+var f = FakeDataMaker( fmt );
+var res = f.make( 10 );
+document.getElementsByTagName("body")[0].innerHTML = GenTable(  Object.keys( fmt ), res ); 
+</script>
+<style>
+table {border-size: 1px}
+</style>
+</html>
