@@ -1,6 +1,7 @@
 # datafaker
-a standalone javascript lib that generates fake data for debugging or testing
+a standalone javascript lib that generates fake data for debugging or testing.
 
+<pre>
 var fmt = {
     'age':  ['integer', 0, 120], // [start, end]
     'full_name': ['name'],
@@ -10,4 +11,4 @@ var fmt = {
     };
 var f = FakeDataMaker( fmt );
 var res = f.make( 10 );
-
+</pre>
