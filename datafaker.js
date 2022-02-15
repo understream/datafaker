@@ -65,15 +65,33 @@ function FakeDataMaker( fmt )
         return [0,0]
     }
 
+    var inc_key_next_value = {};
+    function make_inc( which_key, start ) 
+    {
+        if( !inc_key_next_value[which_key] ) inc_key_next_value[which_key] = 0;
+        inc_key_next_value[which_key] += 1;
+        if( !start ) start = 0;
+        return inc_key_next_value[which_key] + start;
+    }
+
+    function make_hardcode( any )
+    {
+        return any;
+    }
+
     var NAME2FUNC = {
         'integer': make_inteter,
         'name': make_name,
         'word': make_nonsense_word,
         'domain': make_domain,
         'sentence': make_nonsense_sentence,
+        'inc': make_inc,
+        'hardcode': make_hardcode,
     }
 
+
     var maker = {
+        
         make: function( count )
         {
             var ret = [];
