@@ -87,6 +87,7 @@ function FakeDataMaker( fmt )
         'sentence': make_nonsense_sentence,
         'inc': make_inc,
         'hardcode': make_hardcode,
+        'select': select_one,
     }
 
 
